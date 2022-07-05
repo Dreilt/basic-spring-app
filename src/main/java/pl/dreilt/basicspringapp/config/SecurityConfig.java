@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
@@ -26,6 +28,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(requests -> requests
                 .antMatchers("/h2-console/**").permitAll()
                 .mvcMatchers("/").permitAll()
+                .mvcMatchers("/register", "/confirmation").permitAll()
                 .anyRequest().authenticated());
         http.formLogin(login -> login.loginPage("/login").permitAll());
         http.logout(logout -> logout
@@ -50,5 +53,10 @@ public class SecurityConfig {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
         tokenRepository.setDataSource(dataSource);
         return tokenRepository;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }
