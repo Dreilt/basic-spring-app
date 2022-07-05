@@ -12,3 +12,32 @@
     background-color: #f39c12;
     box-shadow: 0 1px 1em;
 }
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.button {
+    text-align: center;
+}
+
+.form-button {
+    color: #ffffff;
+    background-color: #f39c12;
+    border-color: #f39c12;
+}
+
+.form-button:hover {
+    color: #ffffff;
+    background-color: #d68910;
+    border-color: #d68910;
+}
