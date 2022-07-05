@@ -8,52 +8,68 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/styles/main.css" th:href="@{/styles/main.css}"/>
+    <style>
+        .form-error {
+            height: 20px;
+            width: 100%;
+            font-size: 80%;
+            color: #dc3545;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group-error {
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
 <nav th:replace="fragments :: navbar"></nav>
 <div class="container">
-    <form class="login-form" method="post" action="/register" th:object="${user}">
+    <form class="login-form" method="post" th:action="@{/register}" th:object="${appUserRegistration}">
         <h2 class="form-signin-heading">Rejestracja</h2>
         <p>Wprowadź swoje dane poniżej</p>
-        <div class="form-group">
+        <div th:class="${#fields.hasErrors('firstName')} == FALSE ? 'form-group' : 'form-group-error'">
             <label for="firstName" class="form-label">IMIĘ</label>
             <input type="text"
                    id="firstName"
-                   name="firstName"
-                   class="form-control"
+                   class="form-control" th:class="${#fields.hasErrors('firstName')} == FALSE ? 'form-control' : 'form-control is-invalid'"
                    placeholder="Imię"
                    th:field="*{firstName}"
                    required>
+            <div th:errors="*{firstName}" class="form-error">Błędy związane z imieniem</div>
         </div>
-        <div class="form-group">
+        <div th:class="${#fields.hasErrors('lastName')} == FALSE ? 'form-group' : 'form-group-error'">
             <label for="lastName" class="form-label">NAZWISKO</label>
             <input type="text"
                    id="lastName"
-                   name="lastName"
-                   class="form-control"
+                   class="form-control" th:class="${#fields.hasErrors('lastName')} == FALSE ? 'form-control' : 'form-control is-invalid'"
                    placeholder="Nazwisko"
                    th:field="*{lastName}"
                    required>
+            <div th:errors="*{lastName}" class="form-error">Błędy związane z nazwiskiem</div>
         </div>
-        <div class="form-group">
+        <div th:class="${#fields.hasErrors('email')} == FALSE ? 'form-group' : 'form-group-error'">
             <label for="email" class="form-label">E-MAIL</label>
-            <input type="email"
+            <input type="text"
                    id="email"
-                   name="email"
-                   class="form-control"
+                   class="form-control" th:class="${#fields.hasErrors('email')} == FALSE ? 'form-control' : 'form-control is-invalid'"
                    placeholder="E-mail"
                    th:field="*{email}"
                    required>
+            <div th:errors="*{email}" class="form-error">Błędy związane z e-mailem</div>
         </div>
-        <div class="form-group">
+        <div th:class="${#fields.hasErrors('password')} == FALSE ? 'form-group' : 'form-group-error'">
             <label for="password" class="form-label">HASŁO</label>
             <input type="password"
                    id="password"
-                   name="password"
-                   class="form-control"
+                   class="form-control" th:class="${#fields.hasErrors('password')} == FALSE ? 'form-control' : 'form-control is-invalid'"
                    placeholder="Hasło"
                    th:field="*{password}"
                    required>
+            <div th:errors="*{password}" class="form-error">Błędy związane z hasłem</div>
         </div>
         <div class="button">
             <button class="btn btn-lg form-button" type="submit">Zarejestruj się</button>

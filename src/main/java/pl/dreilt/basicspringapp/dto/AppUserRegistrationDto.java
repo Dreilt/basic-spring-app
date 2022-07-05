@@ -1,9 +1,21 @@
 package pl.dreilt.basicspringapp.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class AppUserRegistrationDto {
+    @NotNull
+    @Size(min = 2, max = 50)
     private String firstName;
+    @NotNull
+    @Size(min = 2, max = 50)
     private String lastName;
+    @NotNull
+    @Email
     private String email;
+    @NotNull
+    @Size(min = 5, max = 100)
     private String password;
 
     public String getFirstName() {
