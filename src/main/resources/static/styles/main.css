@@ -1,0 +1,14 @@
+.container {
+    margin: 100px auto auto auto;
+    padding: 50px 75px;
+    max-width: 600px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: lightgray;
+}
+
+.custom-navbar {
+    background-color: #f39c12;
+    box-shadow: 0 1px 1em;
+}
