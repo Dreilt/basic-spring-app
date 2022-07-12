@@ -1,32 +1,55 @@
-.container {
-    margin: 100px auto auto auto;
-    padding: 50px 75px;
-    max-width: 600px;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: lightgray;
-}
-
 .custom-navbar {
     background-color: #f39c12;
     box-shadow: 0 1px 1em;
 }
 
-.form-group {
-    margin-bottom: 16px;
+.container {
+    margin: 100px auto auto auto;
+    padding: 50px 75px;
+    max-width: 1200px;
 }
 
-.login-form {
+.form-container {
+    margin: 100px auto auto auto;
+    padding: 50px 75px;
+    max-width: 600px;
+    border: 1px solid #d3d3d3;
+    border-radius: 0.25rem;
+}
+
+.custom-form {
     display: flex;
     flex-direction: column;
 }
 
-.form-label {
+.form-heading {
+    margin-bottom: 1rem;
+}
+
+.custom-form-group {
+    margin-bottom: 20px;
+}
+
+.custom-form-group-error {
+    margin-bottom: 0;
+}
+
+.custom-form-label {
     font-weight: bold;
 }
 
-.button {
+.error-message {
+    height: 20px;
+    width: 100%;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+.custom-checkbox {
+    accent-color: #f39c12;
+}
+
+.form-button-div {
     text-align: center;
 }
 
@@ -37,7 +60,6 @@
 }
 
 .form-button:hover {
-    color: #ffffff;
     background-color: #d68910;
     border-color: #d68910;
 }
