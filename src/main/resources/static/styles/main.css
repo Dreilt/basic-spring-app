@@ -26,6 +26,20 @@
     margin-bottom: 1rem;
 }
 
+.custom-alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.custom-alert-danger {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border-color: #dc3545;
+}
+
 .custom-form-group {
     margin-bottom: 20px;
 }

@@ -17,6 +17,8 @@
             <h2>Logowanie</h2>
             <span>Wprowadź swoje dane poniżej</span>
         </div>
+        <div class="custom-alert custom-alert-danger" role="alert" th:if="${param.error}" th:text="${#request.getSession().getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">Błędy związane z logowaniem</div>
+        <h1 th:text="#{AbstractUserDetailsAuthenticationProvider.usernameNotFound}">Test</h1>
         <div class="custom-form-group">
             <label for="username" class="custom-form-label">E-MAIL</label>
             <input type="text"

@@ -1,3 +1,5 @@
 spring:
   liquibase:
     change-log: classpath:db/changelog/master.xml
+  messages:
+    basename: messages
