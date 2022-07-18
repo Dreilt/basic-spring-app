@@ -1,5 +1,7 @@
 package pl.dreilt.basicspringapp.service;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.dreilt.basicspringapp.dto.AppUserCredentialsDto;
@@ -15,7 +17,7 @@ import java.util.Optional;
 
 @Service
 public class AppUserService {
-
+    protected final Log logger = LogFactory.getLog(this.getClass());
     private static final String USER_ROLE = "USER";
     private final AppUserRepository appUserRepository;
     private final AppUserRoleRepository appUserRoleRepository;
@@ -43,7 +45,8 @@ public class AppUserService {
         userRole.ifPresentOrElse(
                 role -> appUser.getRoles().add(role),
                 () -> {
-                    throw new NoSuchElementException();
+                    logger.error(String.format("Role with name %s not found", USER_ROLE));
+                    throw new NoSuchElementException("Invalid role: " + USER_ROLE);
                 }
         );
         appUserRepository.save(appUser);
